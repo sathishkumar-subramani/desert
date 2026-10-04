@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desert Archive</title>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #f0b98a; }
+      #webgl { position: fixed; inset: 0; touch-action: none; }
+      /* Temporary HTML overlay. A later stage draws all text inside the canvas (MSDF). */
+      .ui { position: fixed; pointer-events: none; color: #fff4e2; font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+            text-transform: uppercase; text-shadow: 0 1px 12px rgba(60, 30, 10, 0.45); }
+      #mark { left: 32px; top: 28px; font-size: 13px; font-weight: 700; letter-spacing: 0.42em; }
+      #mark small { display: block; margin-top: 8px; font-weight: 400; font-size: 10px; letter-spacing: 0.2em; opacity: 0.75; }
+      #title { left: 0; right: 0; bottom: 56px; text-align: center; }
+      #title .idx { font-size: 10px; letter-spacing: 0.3em; opacity: 0.75; }
+      #title .name { margin-top: 10px; font-size: clamp(18px, 2.6vw, 34px); letter-spacing: 0.5em; margin-right: -0.5em; font-weight: 300; }
+      #title .hint { margin-top: 14px; font-size: 10px; letter-spacing: 0.24em; opacity: 0.7; }
+      #title > div { transition: opacity 0.5s, transform 0.5s; }
+      #title.out > div { opacity: 0; transform: translateY(8px); }
+      #ticks { right: 32px; top: 50%; transform: translateY(-50%); display: grid; gap: 14px; }
+      #ticks i { display: block; height: 1px; width: 14px; margin-left: auto; background: #fff4e2; opacity: 0.45; transition: width 0.4s, opacity 0.4s; }
+      #ticks i.on { width: 34px; opacity: 1; }
+      #hud { left: 32px; bottom: 24px; font-size: 10px; letter-spacing: 0.1em; opacity: 0.55; white-space: pre; text-transform: none; }
+      @media (max-width: 640px) { #mark { left: 16px; top: 18px; } #ticks { right: 16px; } #hud { display: none; } }
+    </style>
+  </head>
+  <body>
+    <div id="webgl"></div>
+    <div id="mark" class="ui">Desert Archive<small>Things built, kept in stone</small></div>
+    <div id="title" class="ui"><div class="idx"></div><div class="name"></div><div class="hint"></div></div>
+    <div id="ticks" class="ui"></div>
+    <div id="hud" class="ui"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
